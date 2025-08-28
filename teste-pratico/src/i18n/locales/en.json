@@ -11,6 +11,12 @@
     "email_label": "Email used in the purchase",
 		"text_button": "Find your purchase"
   },
+  "refund_dialog": {
+    "title": "Verify your email",
+    "text": "To confirm this operation, enter the code we sent to your email: ",
+    "resend_code": "Resend code (40s)",
+    "button": "Continue"
+    },
   "validations": {
     "required": "Required field",
     "email": "Enter a valid email"

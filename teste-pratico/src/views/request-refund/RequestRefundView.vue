@@ -1,19 +1,32 @@
 <script setup lang="ts">
-import InputMask from 'primevue/inputmask';
+import InputText from 'primevue/inputtext'
 import Card from 'primevue/card';
 import { useI18n } from 'vue-i18n'
-const { t, d, n, locale } = useI18n()
-
 import HeaderComponent from '../../components/Header/HeaderComponent.vue';
-
+import VerifyEmailDialog from './components/VerifyEmailDialog.vue'
+import { useRefundRequest } from './../../stores/request-refund';
 import { ref } from 'vue';
 import { Button } from 'primevue';
+import ButtonComponent from '../../components/button-component/ButtonComponent.vue';
+
+const { t, d, n, locale } = useI18n();
+const showDialog = ref(false);
+const useRefund = useRefundRequest();
+
+function openDialog(e?: Event) {
+  e?.preventDefault() 
+  showDialog.value = true
+}
+
+function onConfirm() {
+  showDialog.value = false
+}
 
 function toggleLocale() {
   locale.value = locale.value === 'pt-BR' ? 'en' : 'pt-BR'
 }
 
-const email = ref('');
+
 </script>
 
 <template>
@@ -32,14 +45,31 @@ const email = ref('');
 						<template #content>
 							<div class="flex-auto">
 								<label for="ssn" class="font-bold block mb-2">{{ t('refund.email_label') }}</label>
-								<InputMask class="input" id="ssn" v-model="email" fluid />
+								<InputText
+                  id="email"
+                  v-model="useRefund.email"
+                  type="email"
+                  class="input w-full"
+                  autocomplete="email"
+                />
 							</div>
-							<Button class="buttton" type="submit">{{ t('refund.text_button') }}</Button>
+							<ButtonComponent 
+							:label="t('refund.text_button')"
+							:max-width="390"
+							:margin-top="24"
+							@click="openDialog"
+							type="submit"
+							/>
 						</template>
 					</Card>
 				</form>
 			</div>
 		</main>
+		<VerifyEmailDialog
+      v-model:visible="showDialog"
+      :email="useRefund.email"
+      @confirm="onConfirm"
+    />
 	</div>
 	<!-- <Button class="mt-3" outlined size="small" @click="toggleLocale">
                 {{ locale === 'pt-BR' ? 'Switch to English' : 'Mudar para Português' }}
@@ -65,14 +95,12 @@ const email = ref('');
 h1 {
 	text-align: center;
 	font-size: 28px;
-	color: #171717;
 }
 
 p {
 	text-align: center;
 	font-size: 14px;
 	margin-top: 10px;
-	color: #171717;
 }
 
 .card{
@@ -83,18 +111,5 @@ p {
 .input{
 	width: 100%;
 	max-width: 390px;
-}
-.buttton{
-	width: 100%;
-	max-width: 390px;
-	height: 42px;
-	margin-top: 20px;
-	background-color: #367C50;
-	color: #FFFFFF;
-}
-
-.buttton:hover{
-	background-color: #2E6B42;
-	color: #FFFFFF;
 }
 </style>
