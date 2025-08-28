@@ -1,0 +1,21 @@
+{
+  "app": {
+    "brand": "MultiDrop",
+    "language": "Idioma",
+    "save": "Salvar",
+    "cancel": "Cancelar"
+  },
+  "refund": {
+    "title": "Solicitar reembolso",
+		"text": "Você pode solicitar um reembolso dentro do prazo estipulado pelo produtor.",
+    "email_label": "E-mail usado na compra",
+    "text_button": "Encontrar sua compra"
+  },
+  "validations": {
+    "required": "Campo obrigatório",
+    "email": "Informe um e-mail válido"
+  },
+  "cart": {
+    "items": "Você tem {n} item | Você tem {n} itens"
+  }
+}

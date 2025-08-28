@@ -1,0 +1,21 @@
+{
+  "app": {
+    "brand": "MultiDrop",
+    "language": "Language",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "refund": {
+    "title": "Request a refund",
+		"text": "You can request a refund within the period stipulated by the producer.",
+    "email_label": "Email used in the purchase",
+		"text_button": "Find your purchase"
+  },
+  "validations": {
+    "required": "Required field",
+    "email": "Enter a valid email"
+  },
+  "cart": {
+    "items": "You have {n} item | You have {n} items"
+  }
+}
