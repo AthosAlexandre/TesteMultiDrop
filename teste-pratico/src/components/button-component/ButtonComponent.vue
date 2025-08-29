@@ -7,62 +7,93 @@ const props = withDefaults(defineProps<{
   icon?: string | null
   iconRight?: boolean
   type?: 'button' | 'submit' | 'reset'
-	maxWidth?: string | number
-	marginTop?: string | number
-	marginBottom?: string | number
+
+  width?: string | number
+  maxWidth?: string | number
+  height?: string | number
+  marginTop?: string | number
+  marginBottom?: string | number
+  borderRadius?: string | number
+
+  bgColor?: string       
+  hoverBgColor?: string    
+  textColor?: string
+  
+  fontSize?: string | number
 }>(), {
   label: '',
   icon: null,
   iconRight: false,
   type: 'button',
-	maxWidth: '200px',
-	marginTop: undefined,
-  marginBottom: undefined
+
+  width: '100%',
+  maxWidth: '200px',
+  height: '42px',
+  marginTop: undefined,
+  marginBottom: undefined,
+  borderRadius: '8px',
+
+  bgColor: '#367C50',
+  hoverBgColor: '#2E6B42',
+  textColor: '#FFFFFF',
+
+  fontSize: '16px' 
 })
 
-const styleBind = computed(() => {
-  const toCss = (v: string | number | undefined) =>
-    v == null ? undefined : (typeof v === 'number' ? `${v}px` : v)
+const toCss = (v?: string | number) =>
+  v == null ? undefined : (typeof v === 'number' ? `${v}px` : v)
 
-  const s: Record<string, string | undefined> = {
-    maxWidth: toCss(props.maxWidth),
-    marginTop: toCss(props.marginTop),
-    marginBottom: toCss(props.marginBottom)
-  }
-  return s
-})
+const styleBind = computed(() => ({
+  width: toCss(props.width),
+  maxWidth: toCss(props.maxWidth),
+  height: toCss(props.height),
+  marginTop: toCss(props.marginTop),
+  marginBottom: toCss(props.marginBottom),
+  borderRadius: toCss(props.borderRadius),
 
-// Emite o clique (cada tela trata seu handler)
-const emit = defineEmits<{
-  (e: 'click', ev: MouseEvent): void
-}>()
+  '--btn-bg': props.bgColor,
+  '--btn-bg-hover': props.hoverBgColor,
+  '--btn-text': props.textColor,
+  '--btn-font-size': toCss(props.fontSize) 
+} as Record<string, string | undefined>))
+
+const emit = defineEmits<{ (e: 'click', ev: MouseEvent): void }>()
 </script>
 
 <template>
   <Button
-		class="buttton"
-    v-bind="$attrs"                       
+    class="buttton"
+    v-bind="$attrs"
     :label="label"
     :icon="icon || undefined"
     :iconPos="iconRight ? 'right' : 'left'"
     :type="type"
-		:style="styleBind" 
+    :style="styleBind"
     @click="(e) => emit('click', e)"
-  >
-  </Button>
+  />
 </template>
 
 <style scoped>
-	.buttton{
-	width: 100%;
-	max-width: 390px;
-	height: 42px;
-	background-color: #367C50;
-	color: #FFFFFF;
+.buttton{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  background: var(--btn-bg);
+  border-color: var(--btn-bg);
+  color: var(--btn-text);
+  font-size: var(--btn-font-size);
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+.buttton:deep(.p-button-label),
+.buttton:deep(.p-button-icon){
+  color: var(--btn-text);
+  font-size: var(--btn-font-size);
 }
 
 .buttton:hover{
-	background-color: #2E6B42;
-	color: #FFFFFF;
+  background: var(--btn-bg-hover);
+  border-color: var(--btn-bg-hover);
+  color: var(--btn-text);
 }
 </style>

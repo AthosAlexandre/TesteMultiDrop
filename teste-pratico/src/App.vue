@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterView } from 'vue-router';
 import RequestRefundView from './views/request-refund/RequestRefundView.vue';
+import HeaderComponent from './components/Header/HeaderComponent.vue';
 
 
 </script>
 
 <template>
- <!--  <RouterLink to="/">Home</RouterLink>
-  <RouterLink :to="{ name: 'verify' }">Verify</RouterLink> -->
-  <router-view />
+  <HeaderComponent />
+  <RouterView />
 </template>
 
 <style scoped></style>

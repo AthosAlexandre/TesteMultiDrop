@@ -2,11 +2,9 @@
 import InputText from 'primevue/inputtext'
 import Card from 'primevue/card';
 import { useI18n } from 'vue-i18n'
-import HeaderComponent from '../../components/Header/HeaderComponent.vue';
 import VerifyEmailDialog from './components/VerifyEmailDialog.vue'
 import { useRefundRequest } from './../../stores/request-refund';
 import { ref } from 'vue';
-import { Button } from 'primevue';
 import ButtonComponent from '../../components/button-component/ButtonComponent.vue';
 
 const { t, d, n, locale } = useI18n();
@@ -31,7 +29,7 @@ function toggleLocale() {
 
 <template>
 	<div>
-		<HeaderComponent />
+		
 		<main class="box-main">
 			<div class="container-formulario">
 

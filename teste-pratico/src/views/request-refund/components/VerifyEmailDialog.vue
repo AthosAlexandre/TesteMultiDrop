@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import Dialog from 'primevue/dialog'
-import Button from 'primevue/button'
+import { useRouter } from 'vue-router'
 import InputOtp from 'primevue/inputotp';
 import { useI18n } from 'vue-i18n'
 import { ref } from 'vue';
 import ButtonComponent from '../../../components/button-component/ButtonComponent.vue';
 
+const router = useRouter()   
 const value = ref('');
 const { t } = useI18n();
 
@@ -22,6 +23,16 @@ const emit = defineEmits<{
 function close() {
   visible.value = false
 }
+
+function navegate() {
+
+  if (value.value.length !== 6) return
+
+  close()
+  emit('confirm')
+  router.push({ name: 'your-purchases' });
+}
+
 </script>
 
 <template>
@@ -51,7 +62,7 @@ function close() {
           icon="pi pi-arrow-right"
           iconRight="true"
           :max-width="218"
-          @click="() => { close(); emit('confirm') }"
+          @click="navegate"
           type="button"
         />
       </div>
