@@ -81,6 +81,7 @@ function toggleLocale() {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+	background-color: #FAFAFA;
 }
 
 .container-formulario {

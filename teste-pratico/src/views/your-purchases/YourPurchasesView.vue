@@ -1,34 +1,39 @@
 <script setup lang="ts">
-import Image from 'primevue/image';
+import { storeToRefs } from 'pinia'
+import { useRefundRequest } from './../../stores/request-refund'
+import { useRouter } from 'vue-router'
 import ButtonComponent from '../../components/button-component/ButtonComponent.vue';
 import Card from 'primevue/card';
 import fone from '@/assets/fone-transparente.avif';
-/* import fone from '@/assets/fone.png'; */
+import { Message } from 'primevue';
+import { useI18n } from 'vue-i18n'
+import SubHeader from '../../components/sub-header/SubHeader.vue';
+
+const { t } = useI18n();
+
+const refund = useRefundRequest();
+const { email } = storeToRefs(refund);
+
+const navegar = useRouter();
+
+function goBack() {
+	navegar.push({ name: 'request-refund' });
+}
+
+function refundRequest () {
+	navegar.push({ name: 'refund-form' });
+}
 </script>
 
 <template>
 	<main class="container-main flex flex-column align-items-center">
-		<section class="cabecalho">
-			<div class="voltar" @click="goBack">
-				<i class="pi pi-arrow-left mr-2" aria-hidden="true"></i>
-				<span>Voltar</span>
-			</div>
 
-			<div class="container-texto-cabecalho flex flex-row justify-content-between align-items-center">
-				<div class="titulo">
-					<h2>Suas Compras</h2>
-				</div>
-
-				<div class="login">
-					<p>Você está logado(a) como: john@liberttar.com. Não é você? Log out</p>
-				</div>
-			</div>
-		</section>
+		<SubHeader :title="t('your_purchases.title')" v-on:back="goBack" />
 
 		<section class="aviso">
 			<div class="flex flex-row align-items-center gap-2">
 				<i class="pi pi-info-circle"></i>
-				<p>Ao solicitar um reembolso, a sua compra será cancelada e você não terá mais acesso ao produto.</p>
+				<p>{{ t('your_purchases.alert') }}</p>
 			</div>
 		</section>
 
@@ -36,27 +41,22 @@ import fone from '@/assets/fone-transparente.avif';
 			<div class="container-cards">
 				<Card class="mb-3" :style="{ width: '100%', height: '164px' }">
 					<template #content>
-						<div class="container-card -m-12 flex flex-row justify-content-between align-items-center " >
+						<div class="container-card -m-12 flex flex-row justify-content-between align-items-center ">
 							<div class="card-texto flex align-items-center flex-row gap-5">
 								<div class="img">
 									<img class="" :src="fone" alt="Imagem do produto" />
 								</div>
 								<div class="flex flex-column gap-2 align-content-center">
 									<h2>Wireless Noise-Canceling Headphones</h2>
-									<span>Valor da compra: € 324.00</span>
-									<span>Data da compra: 22/05/2025</span>
-									<span>Data limite para solicitar reembolso: 29/05/2025</span>
+									<span>{{ t('your_purchases.card_value_buy') }} € 324.00</span>
+									<span>{{ t('your_purchases.card_date_buy') }} 22/05/2025</span>
+									<span>{{ t('your_purchases.card_date_limit') }} 29/05/2025</span>
 								</div>
 							</div>
 							<div class="botao px-4">
-								<ButtonComponent 
-									label="Solicitar Reembolso" 
-									text-color="#404040" 
-									bg-color="#E5E5E5"
-									:max-width="150"
-									:font-size="13" 
-									type="button" />
-									
+								<ButtonComponent @click="refundRequest" :label="t('your_purchases.card_button')" text-color="#404040" bg-color="#E5E5E5"
+									:max-width="150" :font-size="13"  type="button" />
+
 							</div>
 						</div>
 					</template>
@@ -64,16 +64,16 @@ import fone from '@/assets/fone-transparente.avif';
 
 				<Card class="mb-3" :style="{ width: '100%', height: '164px' }">
 					<template #content>
-						<div class="container-card -m-12 flex flex-row justify-content-between align-items-center " >
+						<div class="container-card -m-12 flex flex-row justify-content-between align-items-center ">
 							<div class="card-texto flex align-items-center flex-row gap-5">
 								<div class="img">
 									<img class="" :src="fone" alt="Imagem do produto" />
 								</div>
 								<div class="flex flex-column gap-2 align-content-center">
 									<h2>Wireless Noise-Canceling Headphones</h2>
-									<span>Valor da compra: € 324.00</span>
-									<span>Data da compra: 22/05/2025</span>
-									<span>Data limite para solicitar reembolso: 29/05/2025</span>
+									<span>{{ t('your_purchases.card_value_buy') }} € 324.00</span>
+									<span>{{ t('your_purchases.card_date_buy') }} 22/05/2025</span>
+									<span>{{ t('your_purchases.card_date_limit') }} 29/05/2025</span>
 								</div>
 							</div>
 						</div>
@@ -82,27 +82,30 @@ import fone from '@/assets/fone-transparente.avif';
 
 				<Card class="mb-3" :style="{ width: '100%', height: '164px' }">
 					<template #content>
-						<div class="container-card -m-12 flex flex-row justify-content-between align-items-center " >
+						<div class="container-card -m-12 flex flex-row justify-content-between align-items-center ">
 							<div class="card-texto flex align-items-center flex-row gap-5">
 								<div class="img">
 									<img class="" :src="fone" alt="Imagem do produto" />
 								</div>
 								<div class="flex flex-column gap-2 align-content-center">
 									<h2>Wireless Noise-Canceling Headphones</h2>
-									<span>Valor da compra: € 324.00</span>
-									<span>Data da compra: 22/05/2025</span>
-									<span>Data limite para solicitar reembolso: 29/05/2025</span>
+									<span>{{ t('your_purchases.card_value_buy') }} € 324.00</span>
+									<span>{{ t('your_purchases.card_date_buy') }} 22/05/2025</span>
+									<span>{{ t('your_purchases.card_date_limit') }} 29/05/2025</span>
 								</div>
 							</div>
 							<div class="botao px-4">
-								<ButtonComponent 
-									label="Solicitar Reembolso" 
-									text-color="#404040" 
-									bg-color="#E5E5E5"
-									:max-width="150"
-									:font-size="13" 
-									type="button" />
-									
+								<Message severity="success" :pt="{
+									root: {
+										style: {
+											display: 'inline-flex',
+											alignItems: 'center', color: '#FFFFFF', borderRadius: '140px', maxHeight: '22px',
+										},
+
+									},
+									text: { style: { fontSize: '12px', } },
+								}" class="bg-green-500" icon="pi pi-user">
+									{{ t('your_purchases.card_status') }}</Message>
 							</div>
 						</div>
 					</template>
@@ -114,35 +117,8 @@ import fone from '@/assets/fone-transparente.avif';
 </template>
 
 <style scoped>
-.cabecalho {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	width: 100%;
-	max-width: 1000px;
-	height: 114px;
-	margin-top: 20px;
-}
-
-.container-texto-cabecalho h2 {
-	font-size: 28px;
-}
-
-.voltar {
-	display: flex;
-	align-items: center;
-	cursor: pointer;
-	font-size: 1rem;
-	margin-bottom: 1rem;
-}
-
-.voltar:hover span {
-	text-decoration: underline;
-}
-
-.login p {
-	font-size: 12px;
-	color: #737373;
+.container-main {
+	background-color: #FAFAFA;
 }
 
 .aviso {
@@ -159,7 +135,7 @@ import fone from '@/assets/fone-transparente.avif';
 	max-width: 1000px;
 }
 
-.cards h2{
+.cards h2 {
 	font-size: 18px;
 	color: #171717;
 }

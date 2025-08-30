@@ -17,6 +17,19 @@
     "resend_code": "Reenviar código (40s)",
     "button": "Continuar"
     },
+    "your_purchases": {
+      "button_back": "Voltar",
+      "title": "Suas compras",
+      "logged_in": "Você está logado(a) como: ",
+      "log_out": "Não é você?",
+      "log_out_button": "Log out",
+      "alert": "Ao solicitar um reembolso, a sua compra será cancelada e você não terá mais acesso ao produto.",
+      "card_value_buy": "Valor da compra: ",
+      "card_date_buy": "Data da compra: ",
+      "card_date_limit": "Data limite para solicitar reembolso:",
+      "card_button": "Solicitar reembolso",
+      "card_status": "Reembolsado"
+    },
   "validations": {
     "required": "Campo obrigatório",
     "email": "Informe um e-mail válido"

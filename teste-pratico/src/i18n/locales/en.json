@@ -17,6 +17,19 @@
     "resend_code": "Resend code (40s)",
     "button": "Continue"
     },
+   "your_purchases": {
+      "button_back": "Back",
+      "title": "Your purchases",
+      "logged_in": "You are logged in as: ",
+      "log_out": "Not you?",
+      "log_out_button": "Log out",
+      "alert": "By requesting a refund, your purchase will be canceled and you will no longer have access to the product.",
+      "card_value_buy": "Purchase value: ",
+      "card_date_buy": "Purchase date: ",
+      "card_date_limit": "Deadline to request a refund:",
+      "card_button": "Request a refund",
+      "card_status": "Refunded"
+    },
   "validations": {
     "required": "Required field",
     "email": "Enter a valid email"
