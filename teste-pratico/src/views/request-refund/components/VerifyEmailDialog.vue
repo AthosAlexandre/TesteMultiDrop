@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 import Dialog from 'primevue/dialog'
 import InputOtp from 'primevue/inputotp';
 import { useI18n } from 'vue-i18n'
-import ButtonComponent from '../../../components/button-component/ButtonComponent.vue';
+import ButtonComponent from '@/components/button-component/ButtonComponent.vue';
 
 const router = useRouter()   
 const value = ref('');

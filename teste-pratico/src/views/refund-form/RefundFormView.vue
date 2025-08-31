@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import Card from 'primevue/card';
-import SubHeader from '../../components/sub-header/SubHeader.vue';
-import { useRouter } from 'vue-router';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n'
+import Card from 'primevue/card';
 import RadioButton from 'primevue/radiobutton';
 import Textarea from 'primevue/textarea';
-import ButtonComponent from '../../components/button-component/ButtonComponent.vue';
+import SubHeader from '@/components/sub-header/SubHeader.vue';
+import ButtonComponent from '@/components/button-component/ButtonComponent.vue';
 import RefundRequestedDialog from './components/RefundRequestedDialog.vue'
-import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n();
 

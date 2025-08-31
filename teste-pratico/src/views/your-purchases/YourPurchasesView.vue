@@ -4,10 +4,10 @@ import Card from 'primevue/card';
 import { Message } from 'primevue';
 import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
-import { useAuthStore } from '../../stores/auth-store'
+import { useAuthStore } from '@/stores/auth-store'
 import fone from '@/assets/fone-transparente.avif';
-import SubHeader from '../../components/sub-header/SubHeader.vue';
-import ButtonComponent from '../../components/button-component/ButtonComponent.vue';
+import SubHeader from '@/components/sub-header/SubHeader.vue';
+import ButtonComponent from '@/components/button-component/ButtonComponent.vue';
 
 const { t } = useI18n();
 

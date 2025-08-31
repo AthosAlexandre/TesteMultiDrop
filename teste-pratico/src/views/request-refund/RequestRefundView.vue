@@ -3,8 +3,8 @@ import { ref } from 'vue';
 import InputText from 'primevue/inputtext'
 import Card from 'primevue/card';
 import { useI18n, type Locale } from 'vue-i18n'
-import { useAuthStore } from '../../stores/auth-store';
-import ButtonComponent from '../../components/button-component/ButtonComponent.vue';
+import { useAuthStore } from '@/stores/auth-store';
+import ButtonComponent from '@/components/button-component/ButtonComponent.vue';
 import VerifyEmailDialog from './components/VerifyEmailDialog.vue'
 
 const { t, d, n, locale } = useI18n();

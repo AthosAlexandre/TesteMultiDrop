@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Dialog from 'primevue/dialog'
-import ButtonComponent from '../../../components/button-component/ButtonComponent.vue'
+import ButtonComponent from '@/components/button-component/ButtonComponent.vue'
 import { useI18n } from 'vue-i18n'
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 

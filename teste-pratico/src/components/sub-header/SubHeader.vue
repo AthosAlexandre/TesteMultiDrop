@@ -3,7 +3,7 @@ import { useRouter } from 'vue-router'
 import { withDefaults } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
-import { useAuthStore } from '../../stores/auth-store'
+import { useAuthStore } from '@/stores/auth-store'
 
 const { t } = useI18n();
 
