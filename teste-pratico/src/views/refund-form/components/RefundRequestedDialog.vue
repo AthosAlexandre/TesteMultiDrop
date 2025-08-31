@@ -62,7 +62,7 @@ onBeforeUnmount(() => mql.removeEventListener('change', handleMq))
           text-color="#404040"
           bg-color="#FFFFFF"
           :max-width="150"
-          :font-size="13"
+          :font-size="14"
           type="button"
           @click="close"
         />

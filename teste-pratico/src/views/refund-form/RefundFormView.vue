@@ -49,7 +49,7 @@ function reembolsoSolicitado() {
 				<Card :pt="{
 					root: {
 						style: {
-							width: '100%', padding: '1rem', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)', borderRadius: '8px',
+							width: '100%', padding: '10px', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)', borderRadius: '8px',
 						}
 					}
 				}">
@@ -93,7 +93,7 @@ function reembolsoSolicitado() {
 				<Card :pt="{
 					root: {
 						style: {
-							width: '100%', padding: '1rem', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)', borderRadius: '8px',
+							width: '100%', padding: '10px', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)', borderRadius: '8px',
 						}
 					}
 				}">
@@ -120,7 +120,7 @@ function reembolsoSolicitado() {
 												}
 											}
 										}" v-model="selectedCategory" :inputId="category.key" name="dynamic" :value="category.name" />
-										<label style="color: #171717; font-size: 14px;" :for="category.key">{{ category.name }}</label>
+										<label style="color: #171717; font-size: 14px; font-weight: 400;" :for="category.key">{{ category.name }}</label>
 
 									</div>
 								</div>
@@ -177,6 +177,7 @@ h3 {
 
 span {
 	font-size: 14px;
+	font-weight: 500;
 	color: #171717;
 }
 

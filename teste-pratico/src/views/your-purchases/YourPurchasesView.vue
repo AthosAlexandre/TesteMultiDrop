@@ -1,26 +1,25 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-import { useAuthStore } from '../../stores/auth-store'
 import { useRouter } from 'vue-router'
-import ButtonComponent from '../../components/button-component/ButtonComponent.vue';
 import Card from 'primevue/card';
-import fone from '@/assets/fone-transparente.avif';
 import { Message } from 'primevue';
+import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
+import { useAuthStore } from '../../stores/auth-store'
+import fone from '@/assets/fone-transparente.avif';
 import SubHeader from '../../components/sub-header/SubHeader.vue';
+import ButtonComponent from '../../components/button-component/ButtonComponent.vue';
 
 const { t } = useI18n();
 
 const useAuth = useAuthStore();
 const { email } = storeToRefs(useAuth);
-
 const navegar = useRouter();
 
 function goBack() {
 	navegar.push({ name: 'request-refund' });
 }
 
-function refundRequest() {
+function navigate() {
 	navegar.push({ name: 'refund-form' });
 }
 </script>
@@ -37,7 +36,7 @@ function refundRequest() {
 			</div>
 		</section>
 
-		<section class="cards p-3 md:p-0">
+		<section class="cards p-4 md:p-0">
 			<div class="container-cards">
 				<Card class="mb-3" :pt="{ root: { class: 'card-minh' } }">
 					<template #content>
@@ -55,7 +54,7 @@ function refundRequest() {
 								</div>
 							</div>
 							<div class="mt-3 md:mt-0 w-full md:w-auto">
-								<ButtonComponent @click="refundRequest" :label="t('your_purchases.card_button')" text-color="#404040"
+								<ButtonComponent @click="navigate" :label="t('your_purchases.card_button')" text-color="#404040"
 									bg-color="#E5E5E5" :max-width="150" :full-width-mobile="true" :font-size="13" type="button" />
 
 							</div>
@@ -126,10 +125,12 @@ function refundRequest() {
 }
 
 .aviso {
+	width: 100%;
+	max-width: 598px;
 	background: #EFF6FF;
 	border-radius: 4px;
 	margin-bottom: 10px;
-	padding: 12px 16px;
+	padding: 12px 10px;
 	color: #2563EB;
 	font-size: 12px;
 }
@@ -141,6 +142,7 @@ function refundRequest() {
 
 .cards h2 {
 	font-size: 18px;
+	font-weight: 700;
 	color: #171717;
 }
 
@@ -166,6 +168,7 @@ function refundRequest() {
 
 span {
 	font-size: 14px;
+	font-weight: 600;
 	color: #737373;
 }
 
