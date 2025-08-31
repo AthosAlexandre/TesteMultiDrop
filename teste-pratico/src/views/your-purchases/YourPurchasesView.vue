@@ -30,19 +30,19 @@ function refundRequest () {
 
 		<SubHeader :title="t('your_purchases.title')" v-on:back="goBack" />
 
-		<section class="aviso">
+		<section class="aviso mt-3 md:mt-0">
 			<div class="flex flex-row align-items-center gap-2">
 				<i class="pi pi-info-circle"></i>
 				<p>{{ t('your_purchases.alert') }}</p>
 			</div>
 		</section>
 
-		<section class="cards">
+		<section class="cards p-3 md:p-0">
 			<div class="container-cards">
-				<Card class="mb-3" :style="{ width: '100%', height: '164px' }">
+				<Card class="mb-3" :pt="{ root: { class: 'card-minh' } }">
 					<template #content>
-						<div class="container-card -m-12 flex flex-row justify-content-between align-items-center ">
-							<div class="card-texto flex align-items-center flex-row gap-5">
+						<div class="container-card flex flex-column md:flex-row justify-content-between align-items-center">
+							<div style="width: 100%; max-width: 562px;" class="card-texto flex align-items-center flex-column md:flex-row gap-5">
 								<div class="img">
 									<img class="" :src="fone" alt="Imagem do produto" />
 								</div>
@@ -53,19 +53,19 @@ function refundRequest () {
 									<span>{{ t('your_purchases.card_date_limit') }} 29/05/2025</span>
 								</div>
 							</div>
-							<div class="botao px-4">
+							<div class="mt-3 md:mt-0 w-full md:w-auto">
 								<ButtonComponent @click="refundRequest" :label="t('your_purchases.card_button')" text-color="#404040" bg-color="#E5E5E5"
-									:max-width="150" :font-size="13"  type="button" />
+									:max-width="150" :full-width-mobile="true" :font-size="13"  type="button" />
 
 							</div>
 						</div>
 					</template>
 				</Card>
 
-				<Card class="mb-3" :style="{ width: '100%', height: '164px' }">
+				<Card class="mb-3" :pt="{ root: { class: 'card-minh' } }">
 					<template #content>
-						<div class="container-card -m-12 flex flex-row justify-content-between align-items-center ">
-							<div class="card-texto flex align-items-center flex-row gap-5">
+						<div class="container-card -m-12 flex flex-column md:flex-row justify-content-between align-items-center ">
+							<div style="width: 100%; max-width: 562px;" class="card-texto flex align-items-center flex-column md:flex-row gap-5">
 								<div class="img">
 									<img class="" :src="fone" alt="Imagem do produto" />
 								</div>
@@ -80,10 +80,10 @@ function refundRequest () {
 					</template>
 				</Card>
 
-				<Card class="mb-3" :style="{ width: '100%', height: '164px' }">
+				<Card class="mb-3" :pt="{ root: { class: 'card-minh' } }">
 					<template #content>
-						<div class="container-card -m-12 flex flex-row justify-content-between align-items-center ">
-							<div class="card-texto flex align-items-center flex-row gap-5">
+						<div class="container-card -m-12 flex flex-column md:flex-row justify-content-between md:align-items-center ">
+							<div style="width: 100%; max-width: 562px;" class="card-texto flex align-items-center flex-column md:flex-row gap-5">
 								<div class="img">
 									<img class="" :src="fone" alt="Imagem do produto" />
 								</div>
@@ -94,7 +94,7 @@ function refundRequest () {
 									<span>{{ t('your_purchases.card_date_limit') }} 29/05/2025</span>
 								</div>
 							</div>
-							<div class="botao px-4">
+							<div class="botao md:px-4 mt-3 md:mt-0">
 								<Message severity="success" :pt="{
 									root: {
 										style: {
@@ -141,8 +141,10 @@ function refundRequest () {
 }
 
 .img {
-	width: 176px;
-	height: 132px;
+	width: 100%;
+	max-width: 176px;
+	height: 100%;
+	min-height: 132px;
 	border-radius: 12px;
 	background-color: #2D4C48;
 	display: flex;
@@ -151,8 +153,10 @@ function refundRequest () {
 }
 
 .img img {
-	width: 146px;
-	height: 132px;
+	width: 100%;
+	max-width: 146px;
+	height: 100%;
+	min-height: 132px;
 	object-fit: cover;
 }
 
@@ -160,4 +164,28 @@ span {
 	font-size: 14px;
 	color: #737373;
 }
+
+.card-minh {
+  width: 100%;
+  min-height: 164px; 
+}
+
+@media (max-width: 640px) {
+  .card-minh {
+    min-height: 488px;
+  }
+
+	.img {
+	width: 100%;
+	max-width: 296px;
+	min-height: 222px;
+}
+
+.img img {
+	max-width: 180px;
+	min-height: 222px;
+}
+
+}
+
 </style>

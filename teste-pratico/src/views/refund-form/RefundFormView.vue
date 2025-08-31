@@ -37,14 +37,14 @@ function reembolsoSolicitado() {
 </script>
 
 <template>
-	<main class="container-refund-form flex flex-column justify-content-between align-items-center">
+	<main class="container-refund-form flex flex-column md:justify-content-between align-items-center">
 		<SubHeader :title="t('refund-form.title')" v-on:back="goBack" />
 
-		<section class="container-cards flex flex-column justify-content-between gap-5"
+		<section class="container-cards flex flex-column justify-content-between md:gap-4"
 			style="max-width: 600px; width: 100%; height: 100%;">
 
-			<div class="card-detalhes-produto">
-				<h2 style="font-size: 18px; ">{{ t('refund-form.subtitle_card_product') }}</h2>
+			<div class="card-detalhes-produto p-3 md:p-0">
+				<h2 class="mb-2" style="font-size: 18px; ">{{ t('refund-form.subtitle_card_product') }}</h2>
 
 				<Card :pt="{
 					root: {
@@ -87,8 +87,8 @@ function reembolsoSolicitado() {
 				</Card>
 			</div>
 
-			<div class="card-motivo-reembolso">
-				<h2 style="font-size: 18px; ">{{ t('refund-form.subtitle_card_reason') }}</h2>
+			<div class="card-motivo-reembolso p-3 md:p-0">
+				<h2 class="mb-2"  style="font-size: 18px; ">{{ t('refund-form.subtitle_card_reason') }}</h2>
 
 				<Card :pt="{
 					root: {
@@ -147,7 +147,7 @@ function reembolsoSolicitado() {
 				</Card>
 			</div>
 
-			<div class="button flex justify-content-center mb-5">
+			<div class="button flex justify-content-center mb-5 p-3 md:p-0">
 				<ButtonComponent :label="t('refund-form.button')" text-color="#FFFFFF" bg-color="#367C50" :max-width="192"
 					:font-size="15.75" type="button" @click="reembolsoSolicitado" />
 			</div>

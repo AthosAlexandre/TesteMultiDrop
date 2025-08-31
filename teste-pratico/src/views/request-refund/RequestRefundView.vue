@@ -20,9 +20,9 @@ function onConfirm() {
   showDialog.value = false
 }
 
-/* const order: Locale[] = ['pt-BR', 'en', 'de']
+const order: Locale[] = ['pt-BR', 'en', 'de']
 
-function cycleLocale() {
+/* function cycleLocale() {
   const i = order.indexOf(locale.value as Locale)
   const next = order[(i + 1) % order.length]
   locale.value = next
@@ -37,14 +37,14 @@ const nextLabel = computed(() => {
     : next === 'de'
     ? 'Wechseln zu Deutsch'
     : 'Mudar para Português'
-}) */
+}); */
 
 </script>
 
 <template>
 	<div>
 		
-		<main class="box-main">
+		<main class="box-main flex flex-column align-items-center p-3 sm:p-4 md:p-5">
 			<div class="container-formulario">
 
 				<div class="container-texto">
@@ -92,9 +92,6 @@ const nextLabel = computed(() => {
 .box-main {
 	width: 100%;
 	min-height: calc(100vh - 65px);
-	display: flex;
-	align-items: center;
-	flex-direction: column;
 	background-color: #FAFAFA;
 }
 

@@ -16,13 +16,13 @@ const { email } = storeToRefs(refund);
 </script>
 
 <template>
-	<section class="cabecalho">
+	<section class="cabecalho p-3 ">
 		<div class="voltar" @click="props.onBack && props.onBack($event)">
 			<i class="pi pi-arrow-left mr-2" aria-hidden="true"></i>
 			<span>{{ t('your_purchases.button_back') }}</span>
 		</div>
 
-		<div class="container-texto-cabecalho flex flex-row justify-content-between align-items-center">
+		<div class="container-texto-cabecalho flex flex-column md:flex-row md:align-items-center md:justify-content-between gap-2 md:gap-">
 			<div class="titulo">
 				<h2>{{ title }}</h2>
 			</div>

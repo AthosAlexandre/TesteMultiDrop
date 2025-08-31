@@ -3,7 +3,7 @@ import Dialog from 'primevue/dialog'
 import { useRouter } from 'vue-router'
 import InputOtp from 'primevue/inputotp';
 import { useI18n } from 'vue-i18n'
-import { ref } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import ButtonComponent from '../../../components/button-component/ButtonComponent.vue';
 
 const router = useRouter()   
@@ -33,14 +33,25 @@ function navegate() {
   router.push({ name: 'your-purchases' });
 }
 
+const mql = window.matchMedia('(max-width: 640px)');
+const isMobile = ref(mql.matches);
+const position = computed(() => (isMobile.value ? 'top' : 'center'));
+
+function handleMq(e: MediaQueryListEvent) { isMobile.value = e.matches }
+onMounted(() => mql.addEventListener('change', handleMq));
+onBeforeUnmount(() => mql.removeEventListener('change', handleMq));
+
+const rootStyle = computed(() => (isMobile.value ? { marginTop: '68px' } : {}));
+
 </script>
 
 <template>
-  <Dialog class="dialog" v-model:visible="visible" modal :draggable="false" :dismissableMask="true"
-    :style="{ width: '28rem' }" header=" "
+  <Dialog v-model:visible="visible" :position="position" modal :draggable="false" :dismissableMask="true"
+    :style="{ width: 'min(480px, calc(100vw - 32px))' }" header=" "
     :pt="{
     header:  { class: 'py-1 px-3' },
-    content: { class: 'pt-2 pb-4 px-3'}
+    content: { class: 'pt-2 pb-4 px-3'},
+    root:    { style: rootStyle }  
   }"
     >
     <div class="container-verify-email flex flex-column align-content-betweenr gap-4">
@@ -71,11 +82,6 @@ function navegate() {
 </template>
 
 <style scoped>
-.dialog {
-  width: 100%;
-  max-width: 480px;
-  height: 302px;
-}
 
 h2 {
   text-align: center;
@@ -104,4 +110,5 @@ p{
   text-align: center;
   border: 1px solid #737373;
 }
+
 </style>

@@ -2,6 +2,7 @@
 import Dialog from 'primevue/dialog'
 import ButtonComponent from '../../../components/button-component/ButtonComponent.vue'
 import { useI18n } from 'vue-i18n'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 
 const { t } = useI18n();
 
@@ -19,16 +20,31 @@ function close() {
   visible.value = false
   emit('close')
 }
+
+const mql = window.matchMedia('(max-width: 640px)')
+const isMobile = ref(mql.matches)
+const position = computed(() => (isMobile.value ? 'top' : 'center'))
+const rootStyle = computed(() => (isMobile.value ? { marginTop: '68px' } : {}))
+
+function handleMq(e: MediaQueryListEvent) { isMobile.value = e.matches }
+onMounted(() => mql.addEventListener('change', handleMq))
+onBeforeUnmount(() => mql.removeEventListener('change', handleMq))
+
 </script>
 
 <template>
   <Dialog
     v-model:visible="visible"
+    :position="position"
     modal
     :closable="false"
     :dismissable-mask="true"
     :style="{ width: '100%', maxWidth: '480px' }"
-    :pt="{ header: { class: 'hidden' }, content: { style: { padding: '12px 24px 20px' } } }"
+    :pt="{
+      header:  { class: 'hidden' },
+      content: { style: { padding: '12px 24px 20px' } },
+      root:    { style: rootStyle }
+    }"
   >
     <div class="flex flex-column align-items-center justify-content-center p-2 gap-3">
       <i class="pi pi-check-circle" style="font-size: 4rem; color: #41B871;"></i>

@@ -10,6 +10,7 @@ const props = withDefaults(defineProps<{
 
   width?: string | number
   maxWidth?: string | number
+  fullWidthMobile?: boolean
   height?: string | number
   marginTop?: string | number
   marginBottom?: string | number
@@ -28,6 +29,7 @@ const props = withDefaults(defineProps<{
 
   width: '100%',
   maxWidth: '200px',
+  fullWidthMobile: true,
   height: '42px',
   marginTop: undefined,
   marginBottom: undefined,
@@ -63,6 +65,7 @@ const emit = defineEmits<{ (e: 'click', ev: MouseEvent): void }>()
 <template>
   <Button
     class="buttton"
+    :class="{ 'btn-mobile-full': fullWidthMobile }" 
     v-bind="$attrs"
     :label="label"
     :icon="icon || undefined"
@@ -96,4 +99,12 @@ const emit = defineEmits<{ (e: 'click', ev: MouseEvent): void }>()
   border-color: var(--btn-bg-hover);
   color: var(--btn-text);
 }
+
+@media (max-width: 640px) {
+  .btn-mobile-full {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
 </style>
