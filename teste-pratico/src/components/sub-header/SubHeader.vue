@@ -2,17 +2,17 @@
 import { withDefaults } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
-import { useRefundRequest } from './../../stores/request-refund'
+import { useAuthStore } from '../../stores/auth-store'
 
 const props = withDefaults(defineProps<{
-  title: string
-  onBack?: (ev: MouseEvent) => void
+	title: string
+	onBack?: (ev: MouseEvent) => void
 }>(), {})
 
 const { t } = useI18n();
 
-const refund = useRefundRequest();
-const { email } = storeToRefs(refund);
+const useAuth = useAuthStore();
+const { email } = storeToRefs(useAuth);
 </script>
 
 <template>
@@ -22,7 +22,8 @@ const { email } = storeToRefs(refund);
 			<span>{{ t('your_purchases.button_back') }}</span>
 		</div>
 
-		<div class="container-texto-cabecalho flex flex-column md:flex-row md:align-items-center md:justify-content-between gap-2 md:gap-">
+		<div
+			class="container-texto-cabecalho flex flex-column md:flex-row md:align-items-center md:justify-content-between gap-2 md:gap-">
 			<div class="titulo">
 				<h2>{{ title }}</h2>
 			</div>
@@ -36,7 +37,6 @@ const { email } = storeToRefs(refund);
 </template>
 
 <style scoped>
-
 .cabecalho {
 	display: flex;
 	flex-direction: column;
@@ -71,5 +71,4 @@ b {
 	font-size: 12px;
 	color: #737373;
 }
-
 </style>

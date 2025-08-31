@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Dialog from 'primevue/dialog'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router'
+import Dialog from 'primevue/dialog'
 import InputOtp from 'primevue/inputotp';
 import { useI18n } from 'vue-i18n'
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import ButtonComponent from '../../../components/button-component/ButtonComponent.vue';
 
 const router = useRouter()   
@@ -11,11 +11,9 @@ const value = ref('');
 const { t } = useI18n();
 
 const visible = defineModel<boolean>('visible', { default: false })
-
 const props = defineProps<{
   email?: string
 }>()
-
 const emit = defineEmits<{
   (e: 'confirm'): void
 }>()
@@ -25,7 +23,6 @@ function close() {
 }
 
 function navegate() {
-
   if (value.value.length !== 6) return
 
   close()
@@ -58,7 +55,7 @@ const rootStyle = computed(() => (isMobile.value ? { marginTop: '68px' } : {}));
       <div class="container-texto">
         <h2>{{ t('refund_dialog.title') }}</h2>
         <p class="texto-principal"> {{ t('refund_dialog.text') }}<strong>{{ props.email }}</strong></p>
-        <p>{{ t('refund_dialog.resend_code') }}</p>
+        <p style="color: #737373; font-size: 14px;">{{ t('refund_dialog.resend_code') }}</p>
       </div>
 
       <div class="container-input flex justify-content-center">
@@ -86,6 +83,7 @@ const rootStyle = computed(() => (isMobile.value ? { marginTop: '68px' } : {}));
 h2 {
   text-align: center;
   font-size: 23px;
+  font-weight: 700;
   color: #171717;
 }
 p{
@@ -96,6 +94,7 @@ p{
 
 .texto-principal{
   color: #171717;
+  font-size: 14px;
 }
 
 .otp-lg {
@@ -109,6 +108,17 @@ p{
   font-size: 20px;
   text-align: center;
   border: 1px solid #737373;
+}
+
+@media (max-width: 640px) {
+  .otp-lg {
+  gap: 9px;
+}
+
+.otp-lg:deep(.p-inputotp-input) {
+  width: 40px;
+  height: 40px;
+}
 }
 
 </style>

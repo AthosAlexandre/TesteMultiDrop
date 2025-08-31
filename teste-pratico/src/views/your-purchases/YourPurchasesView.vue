@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { useRefundRequest } from './../../stores/request-refund'
+import { useAuthStore } from '../../stores/auth-store'
 import { useRouter } from 'vue-router'
 import ButtonComponent from '../../components/button-component/ButtonComponent.vue';
 import Card from 'primevue/card';
@@ -11,8 +11,8 @@ import SubHeader from '../../components/sub-header/SubHeader.vue';
 
 const { t } = useI18n();
 
-const refund = useRefundRequest();
-const { email } = storeToRefs(refund);
+const useAuth = useAuthStore();
+const { email } = storeToRefs(useAuth);
 
 const navegar = useRouter();
 
@@ -20,7 +20,7 @@ function goBack() {
 	navegar.push({ name: 'request-refund' });
 }
 
-function refundRequest () {
+function refundRequest() {
 	navegar.push({ name: 'refund-form' });
 }
 </script>
@@ -42,7 +42,8 @@ function refundRequest () {
 				<Card class="mb-3" :pt="{ root: { class: 'card-minh' } }">
 					<template #content>
 						<div class="container-card flex flex-column md:flex-row justify-content-between align-items-center">
-							<div style="width: 100%; max-width: 562px;" class="card-texto flex align-items-center flex-column md:flex-row gap-5">
+							<div style="width: 100%; max-width: 562px;"
+								class="card-texto flex align-items-center flex-column md:flex-row gap-5">
 								<div class="img">
 									<img class="" :src="fone" alt="Imagem do produto" />
 								</div>
@@ -54,8 +55,8 @@ function refundRequest () {
 								</div>
 							</div>
 							<div class="mt-3 md:mt-0 w-full md:w-auto">
-								<ButtonComponent @click="refundRequest" :label="t('your_purchases.card_button')" text-color="#404040" bg-color="#E5E5E5"
-									:max-width="150" :full-width-mobile="true" :font-size="13"  type="button" />
+								<ButtonComponent @click="refundRequest" :label="t('your_purchases.card_button')" text-color="#404040"
+									bg-color="#E5E5E5" :max-width="150" :full-width-mobile="true" :font-size="13" type="button" />
 
 							</div>
 						</div>
@@ -65,7 +66,8 @@ function refundRequest () {
 				<Card class="mb-3" :pt="{ root: { class: 'card-minh' } }">
 					<template #content>
 						<div class="container-card -m-12 flex flex-column md:flex-row justify-content-between align-items-center ">
-							<div style="width: 100%; max-width: 562px;" class="card-texto flex align-items-center flex-column md:flex-row gap-5">
+							<div style="width: 100%; max-width: 562px;"
+								class="card-texto flex align-items-center flex-column md:flex-row gap-5">
 								<div class="img">
 									<img class="" :src="fone" alt="Imagem do produto" />
 								</div>
@@ -82,8 +84,10 @@ function refundRequest () {
 
 				<Card class="mb-3" :pt="{ root: { class: 'card-minh' } }">
 					<template #content>
-						<div class="container-card -m-12 flex flex-column md:flex-row justify-content-between md:align-items-center ">
-							<div style="width: 100%; max-width: 562px;" class="card-texto flex align-items-center flex-column md:flex-row gap-5">
+						<div
+							class="container-card -m-12 flex flex-column md:flex-row justify-content-between md:align-items-center ">
+							<div style="width: 100%; max-width: 562px;"
+								class="card-texto flex align-items-center flex-column md:flex-row gap-5">
 								<div class="img">
 									<img class="" :src="fone" alt="Imagem do produto" />
 								</div>
@@ -166,26 +170,25 @@ span {
 }
 
 .card-minh {
-  width: 100%;
-  min-height: 164px; 
+	width: 100%;
+	min-height: 164px;
 }
 
 @media (max-width: 640px) {
-  .card-minh {
-    min-height: 488px;
-  }
+	.card-minh {
+		min-height: 488px;
+	}
 
 	.img {
-	width: 100%;
-	max-width: 296px;
-	min-height: 222px;
-}
+		width: 100%;
+		max-width: 296px;
+		min-height: 222px;
+	}
 
-.img img {
-	max-width: 180px;
-	min-height: 222px;
-}
+	.img img {
+		max-width: 180px;
+		min-height: 222px;
+	}
 
 }
-
 </style>

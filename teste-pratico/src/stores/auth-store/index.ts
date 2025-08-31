@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useRefundRequest = defineStore('refund', {
+export const useAuthStore = defineStore('useAuth', {
   state: () => ({
     email: '' as string,
   }),
@@ -12,4 +12,4 @@ export const useRefundRequest = defineStore('refund', {
     storage: localStorage,
     paths: ['email']
   }
-})
+});

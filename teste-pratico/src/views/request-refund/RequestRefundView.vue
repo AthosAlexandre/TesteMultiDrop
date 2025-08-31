@@ -1,49 +1,48 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import InputText from 'primevue/inputtext'
 import Card from 'primevue/card';
 import { useI18n, type Locale } from 'vue-i18n'
-import VerifyEmailDialog from './components/VerifyEmailDialog.vue'
-import { useRefundRequest } from './../../stores/request-refund';
-import { computed, ref } from 'vue';
+import { useAuthStore } from '../../stores/auth-store';
 import ButtonComponent from '../../components/button-component/ButtonComponent.vue';
+import VerifyEmailDialog from './components/VerifyEmailDialog.vue'
 
 const { t, d, n, locale } = useI18n();
+const useAuth = useAuthStore();
 const showDialog = ref(false);
-const useRefund = useRefundRequest();
 
 function openDialog(e?: Event) {
-  e?.preventDefault() 
-  showDialog.value = true
+	e?.preventDefault()
+	showDialog.value = true
 }
-
 function onConfirm() {
-  showDialog.value = false
+	showDialog.value = false
 }
 
-const order: Locale[] = ['pt-BR', 'en', 'de']
-
-/* function cycleLocale() {
-  const i = order.indexOf(locale.value as Locale)
-  const next = order[(i + 1) % order.length]
-  locale.value = next
-  localStorage.setItem('locale', next)
+/* 
+const order: Locale[] = ['pt-BR', 'en', 'de'];
+function cycleLocale() {
+	const i = order.indexOf(locale.value as Locale)
+	const next = order[(i + 1) % order.length]
+	locale.value = next
+	localStorage.setItem('locale', next)
 }
 
 const nextLabel = computed(() => {
-  const i = order.indexOf(locale.value as Locale)
-  const next = order[(i + 1) % order.length]
-  return next === 'en'
-    ? 'Switch to English'
-    : next === 'de'
-    ? 'Wechseln zu Deutsch'
-    : 'Mudar para Português'
+	const i = order.indexOf(locale.value as Locale)
+	const next = order[(i + 1) % order.length]
+	return next === 'en'
+		? 'Switch to English'
+		: next === 'de'
+		? 'Wechseln zu Deutsch'
+		: 'Mudar para Português'
 }); */
 
 </script>
 
 <template>
 	<div>
-		
+
 		<main class="box-main flex flex-column align-items-center p-3 sm:p-4 md:p-5">
 			<div class="container-formulario">
 
@@ -53,35 +52,28 @@ const nextLabel = computed(() => {
 				</div>
 
 				<form action="" class="flex flex-column align-items-center">
-					<Card class="mt-6 p-4 shadow-2 border-round card">
+					<Card class="mt-6 p-4 shadow-2 border-round" :pt="{ root: { class: 'card' } }">
 						<template #content>
 							<div class="flex-auto">
-								<label for="ssn" class="font-bold block mb-2">{{ t('refund.email_label') }}</label>
-								<InputText
-                  id="email"
-                  v-model="useRefund.email"
-                  type="email"
-                  class="input w-full"
-                  autocomplete="email"
-                />
+
+								<label style="color: #1D1F20; font-weight: 600; font-size: 14px;" for="ssn"
+									class="font-bold block mb-2">{{ t('refund.email_label') }}</label>
+
+								<InputText :pt="{
+									root: {
+										class :'input-text'
+									},
+								}" id="email" v-model="useAuth.email" type="email" class="w-full" autocomplete="email" />
+
 							</div>
-							<ButtonComponent 
-							:label="t('refund.text_button')"
-							:max-width="390"
-							:margin-top="24"
-							@click="openDialog"
-							type="submit"
-							/>
+							<ButtonComponent :label="t('refund.text_button')" :max-width="390" :margin-top="24" @click="openDialog"
+								type="submit" />
 						</template>
 					</Card>
 				</form>
 			</div>
 		</main>
-		<VerifyEmailDialog
-      v-model:visible="showDialog"
-      :email="useRefund.email"
-      @confirm="onConfirm"
-    />
+		<VerifyEmailDialog v-model:visible="showDialog" :email="useAuth.email" @confirm="onConfirm" />
 	</div>
 	<!-- <Button class="mt-3" outlined size="small" @click="cycleLocale">
     		{{ nextLabel }}
@@ -113,13 +105,17 @@ p {
 	margin-top: 10px;
 }
 
-.card{
+.card {
 	width: 100%;
 	max-width: 470px;
 }
 
-.input{
+.input-text {
+	background-color: #FFFFFF;
+	border: 1px solid #C4C7CA;
+	color: #171717;
 	width: 100%;
 	max-width: 390px;
+	height: 48px;
 }
 </style>
