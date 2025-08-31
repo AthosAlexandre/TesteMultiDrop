@@ -28,7 +28,8 @@
       "card_date_buy": "Purchase date: ",
       "card_date_limit": "Deadline to request a refund:",
       "card_button": "Request a refund",
-      "card_status": "Refunded"
+      "card_status": "Refunded",
+      "status_waiting" : "Waiting"
     },
     "refund-form": {
       "title": "Request a refund",

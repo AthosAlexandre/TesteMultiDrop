@@ -28,7 +28,8 @@
       "card_date_buy": "Data da compra: ",
       "card_date_limit": "Data limite para solicitar reembolso:",
       "card_button": "Solicitar reembolso",
-      "card_status": "Reembolsado"
+      "card_status": "Reembolsado",
+      "status_waiting" : "Aguardando"
     },
     "refund-form": {
       "title": "Solicitar reembolso",

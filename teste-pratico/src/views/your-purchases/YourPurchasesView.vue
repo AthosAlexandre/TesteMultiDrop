@@ -22,6 +22,48 @@ function goBack() {
 function navigate() {
 	navegar.push({ name: 'refund-form' });
 }
+
+const compras = [
+	{
+		'id': 1,
+		'img_produto': fone,
+		'valor_compra': '€ 324.00',
+		'data_compra': '22/05/2025',
+		'data_limite_reebolso': '29/05/2025',
+		'estado': ''
+	},
+	{
+		'id': 2,
+		'img_produto': fone,
+		'valor_compra': '€ 324.00',
+		'data_compra': '22/05/2025',
+		'data_limite_reebolso': '29/05/2025',
+		'estado': 'aguardando'
+	},
+	{
+		'id': 3,
+		'img_produto': fone,
+		'valor_compra': '€ 324.00',
+		'data_compra': '22/05/2025',
+		'data_limite_reebolso': '29/05/2025',
+		'estado': 'realizado'
+	}
+];
+
+const messagePt = {
+	root: {
+		style: {
+			display: 'inline-flex',
+			alignItems: 'center',
+			color: '#FFFFFF',
+			borderRadius: '140px',
+			maxHeight: '22px',
+			maxWidth: '130px'
+		}
+	},
+	text: { style: { fontSize: '12px' } }
+}
+
 </script>
 
 <template>
@@ -38,85 +80,45 @@ function navigate() {
 
 		<section class="cards p-4 md:p-0">
 			<div class="container-cards">
-				<Card class="mb-3" :pt="{ root: { class: 'card-minh' } }">
+				<Card v-for="compra in compras" :key="compra.id" class="mb-3" :pt="{ root: { class: 'card-minh' } }">
 					<template #content>
 						<div class="container-card flex flex-column md:flex-row justify-content-between align-items-center">
 							<div style="width: 100%; max-width: 562px;"
 								class="card-texto flex align-items-center flex-column md:flex-row gap-5">
 								<div class="img">
-									<img class="" :src="fone" alt="Imagem do produto" />
+									<img :src="compra.img_produto" :alt="`Produto ${compra.id}`" />
 								</div>
+
 								<div class="flex flex-column gap-2 align-content-center">
 									<h2>Wireless Noise-Canceling Headphones</h2>
-									<span>{{ t('your_purchases.card_value_buy') }} € 324.00</span>
-									<span>{{ t('your_purchases.card_date_buy') }} 22/05/2025</span>
-									<span>{{ t('your_purchases.card_date_limit') }} 29/05/2025</span>
+									<span>{{ t('your_purchases.card_value_buy') }} {{ compra.valor_compra }}</span>
+									<span>{{ t('your_purchases.card_date_buy') }} {{ compra.data_compra }}</span>
+									<span>{{ t('your_purchases.card_date_limit') }} {{ compra.data_limite_reebolso }}</span>
 								</div>
 							</div>
+
 							<div class="mt-3 md:mt-0 w-full md:w-auto">
 								
-								<ButtonComponent @click="navigate" :label="t('your_purchases.card_button')" text-color="#404040"
-									bg-color="#E5E5E5" hover-bg-color="#D1CFCF" :max-width="150" :full-width-mobile="true" :font-size="13" type="button" />
+								<ButtonComponent v-if="!compra.estado" @click="navigate" :label="t('your_purchases.card_button')"
+									text-color="#404040" bg-color="#E5E5E5" hover-bg-color="#D1CFCF" :max-width="150"
+									:full-width-mobile="true" :font-size="13" type="button" />
 
-							</div>
-						</div>
-					</template>
-				</Card>
+								<Message v-else-if="compra.estado === 'aguardando'" severity="info" :pt="messagePt" class="bg-blue-500"
+									icon="pi pi-clock">
+									{{ t('your_purchases.status_waiting') }}
+								</Message>
 
-				<Card class="mb-3" :pt="{ root: { class: 'card-minh' } }">
-					<template #content>
-						<div class="container-card -m-12 flex flex-column md:flex-row justify-content-between align-items-center ">
-							<div style="width: 100%; max-width: 562px;"
-								class="card-texto flex align-items-center flex-column md:flex-row gap-5">
-								<div class="img">
-									<img class="" :src="fone" alt="Imagem do produto" />
-								</div>
-								<div class="flex flex-column gap-2 align-content-center">
-									<h2>Wireless Noise-Canceling Headphones</h2>
-									<span>{{ t('your_purchases.card_value_buy') }} € 324.00</span>
-									<span>{{ t('your_purchases.card_date_buy') }} 22/05/2025</span>
-									<span>{{ t('your_purchases.card_date_limit') }} 29/05/2025</span>
-								</div>
-							</div>
-						</div>
-					</template>
-				</Card>
-
-				<Card class="mb-3" :pt="{ root: { class: 'card-minh' } }">
-					<template #content>
-						<div
-							class="container-card -m-12 flex flex-column md:flex-row justify-content-between md:align-items-center ">
-							<div style="width: 100%; max-width: 562px;"
-								class="card-texto flex align-items-center flex-column md:flex-row gap-5">
-								<div class="img">
-									<img class="" :src="fone" alt="Imagem do produto" />
-								</div>
-								<div class="flex flex-column gap-2 align-content-center">
-									<h2>Wireless Noise-Canceling Headphones</h2>
-									<span>{{ t('your_purchases.card_value_buy') }} € 324.00</span>
-									<span>{{ t('your_purchases.card_date_buy') }} 22/05/2025</span>
-									<span>{{ t('your_purchases.card_date_limit') }} 29/05/2025</span>
-								</div>
-							</div>
-							<div class="botao md:px-4 mt-3 md:mt-0">
-								<Message severity="success" :pt="{
-									root: {
-										style: {
-											display: 'inline-flex',
-											alignItems: 'center', color: '#FFFFFF', borderRadius: '140px', maxHeight: '22px',
-										},
-
-									},
-									text: { style: { fontSize: '12px', } },
-								}" class="bg-green-500" icon="pi pi-user">
-									{{ t('your_purchases.card_status') }}</Message>
+								<Message v-else-if="compra.estado === 'realizado'" severity="success" :pt="messagePt"
+									class="bg-green-500" icon="pi pi-user">
+									{{ t('your_purchases.card_status') }}
+								</Message>
+								
 							</div>
 						</div>
 					</template>
 				</Card>
 			</div>
 		</section>
-
 	</main>
 </template>
 

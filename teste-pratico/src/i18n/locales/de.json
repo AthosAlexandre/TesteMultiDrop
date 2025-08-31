@@ -28,7 +28,8 @@
     "card_date_buy": "Kaufdatum: ",
     "card_date_limit": "Frist für Rückerstattungsantrag:",
     "card_button": "Rückerstattung beantragen",
-    "card_status": "Erstattet"
+    "card_status": "Erstattet",
+    "status_waiting" : "Beantragt"
   },
   "refund-form": {
     "title": "Rückerstattung beantragen",
