@@ -58,9 +58,11 @@ onBeforeUnmount(() => mql.removeEventListener('change', handleMq))
       <div class="botao-fechar">
         <ButtonComponent
           icon="pi pi-times"
+          :icon-size="10"
           :label="t('refund-form-dialog.button')"
           text-color="#404040"
           bg-color="#FFFFFF"
+          hover-bg-color="#D1CFCF"
           :max-width="150"
           :font-size="14"
           type="button"

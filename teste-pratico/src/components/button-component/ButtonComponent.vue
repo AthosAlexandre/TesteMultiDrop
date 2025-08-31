@@ -21,6 +21,7 @@ const props = withDefaults(defineProps<{
   textColor?: string
   
   fontSize?: string | number
+  iconSize?: string | number
 }>(), {
   label: '',
   icon: null,
@@ -39,7 +40,8 @@ const props = withDefaults(defineProps<{
   hoverBgColor: '#2E6B42',
   textColor: '#FFFFFF',
 
-  fontSize: '16px' 
+  fontSize: '16px',
+  iconSize: undefined,
 })
 
 const toCss = (v?: string | number) =>
@@ -56,7 +58,8 @@ const styleBind = computed(() => ({
   '--btn-bg': props.bgColor,
   '--btn-bg-hover': props.hoverBgColor,
   '--btn-text': props.textColor,
-  '--btn-font-size': toCss(props.fontSize) 
+  '--btn-font-size': toCss(props.fontSize),
+  '--btn-icon-size': toCss(props.iconSize)
 } as Record<string, string | undefined>))
 
 const emit = defineEmits<{ (e: 'click', ev: MouseEvent): void }>()
@@ -82,21 +85,25 @@ const emit = defineEmits<{ (e: 'click', ev: MouseEvent): void }>()
   justify-content: center;
   align-items: center;
 
-  background: var(--btn-bg);
-  border-color: var(--btn-bg);
+  background: var(--btn-bg) !important;
+  border-color: var(--btn-bg) !important;
   color: var(--btn-text);
   font-size: var(--btn-font-size);
   transition: background-color .15s ease, border-color .15s ease, color .15s ease;
 }
-.buttton:deep(.p-button-label),
-.buttton:deep(.p-button-icon){
+.buttton:deep(.p-button-label){
   color: var(--btn-text);
   font-size: var(--btn-font-size);
 }
+.buttton:deep(.p-button-icon){
+  color: var(--btn-text);
+  font-size: var(--btn-icon-size, var(--btn-font-size));
+  line-height: 1;
+}
 
 .buttton:hover{
-  background: var(--btn-bg-hover);
-  border-color: var(--btn-bg-hover);
+  background: var(--btn-bg-hover) !important;
+  border-color: var(--btn-bg-hover) !important;
   color: var(--btn-text);
 }
 

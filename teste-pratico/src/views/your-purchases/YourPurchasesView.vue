@@ -54,8 +54,9 @@ function navigate() {
 								</div>
 							</div>
 							<div class="mt-3 md:mt-0 w-full md:w-auto">
+								
 								<ButtonComponent @click="navigate" :label="t('your_purchases.card_button')" text-color="#404040"
-									bg-color="#E5E5E5" :max-width="150" :full-width-mobile="true" :font-size="13" type="button" />
+									bg-color="#E5E5E5" hover-bg-color="#D1CFCF" :max-width="150" :full-width-mobile="true" :font-size="13" type="button" />
 
 							</div>
 						</div>
