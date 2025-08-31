@@ -1,0 +1,66 @@
+{
+  "app": {
+    "brand": "MultiDrop",
+    "language": "Sprache",
+    "save": "Speichern",
+    "cancel": "Abbrechen"
+  },
+  "refund": {
+    "title": "Rückerstattung anfordern",
+    "text": "Du kannst eine Rückerstattung innerhalb der vom Vendor festgelegten Frist beantragen.",
+    "email_label": "E-Mail, die du beim Kauf verwendet hast",
+    "text_button": "Bestellung finden"
+  },
+  "refund_dialog": {
+    "title": "E-Mail bestätigen",
+    "text": "Um diesen Vorgang zu bestätigen, gib bitte den Code ein, den wir an deine E-Mail-Adresse geschickt haben: ",
+    "resend_code": "Code erneut senden (40s)",
+    "button": "Weiter"
+  },
+  "your_purchases": {
+    "button_back": "Zurück",
+    "title": "Meine Käufe",
+    "logged_in": "Du bist eingeloggt als: ",
+    "log_out": "Nicht du?",
+    "log_out_button": "Abmelden",
+    "alert": "Wenn du eine Rückerstattung beantragst, wird dein Zugang zum Produkt dauerhaft entfernt.",
+    "card_value_buy": "Kaufbetrag: ",
+    "card_date_buy": "Kaufdatum: ",
+    "card_date_limit": "Frist für Rückerstattungsantrag:",
+    "card_button": "Rückerstattung beantragen",
+    "card_status": "Erstattet"
+  },
+  "refund-form": {
+    "title": "Rückerstattung beantragen",
+    "subtitle_card_product": "Produktdetails",
+    "name_product": "Produktname",
+    "value_buy": "Betrag",
+    "date_limit": "Frist für Rückerstattungsantrag",
+    "method_payment": "Zahlungsmethode",
+    "email_support": "Support-E-Mail des Verkäufers",
+    "subtitle_card_reason": "Rückerstattungsgrund",
+    "title_form": "Bitte wähle einen Grund aus",
+    "subtitle_form": "Pflichtfeld",
+    "reason_1": "Ich hatte keinen Zugriff auf das Produkt",
+    "reason_2": "Ich habe das Produkt versehentlich gekauft (Doppelkauf)",
+    "reason_3": "Das Produkt entspricht nicht der Beschreibung",
+    "reason_4": "Technische Probleme beim Zugriff oder beim Download",
+    "reason_5": "Ich bin mit der Qualität nicht zufrieden",
+    "reason_6": "Ich habe das Produkt nicht mehr benötigt",
+    "title_text_area": "Sonstiger Grund:",
+    "subtitle_text_area": "",
+    "button": "Rückerstattung beantragen"
+  },
+  "refund-form-dialog": {
+    "title": "Rückerstattung angefragt",
+    "message": "Du erhältst in Kürze eine E-Mail mit dem aktuellen Status deiner Rückerstattung. Bitte überprüfe auch deinen SPAM-Ordner.",
+    "button": "Schließen"
+  },
+  "validations": {
+    "required": "Pflichtfeld",
+    "email": "Bitte eine gültige E-Mail-Adresse angeben"
+  },
+  "cart": {
+    "items": "Sie haben {n} Artikel | Sie haben {n} Artikel"
+  }
+}

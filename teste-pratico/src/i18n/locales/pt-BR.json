@@ -30,6 +30,32 @@
       "card_button": "Solicitar reembolso",
       "card_status": "Reembolsado"
     },
+    "refund-form": {
+      "title": "Solicitar reembolso",
+      "subtitle_card_product": "Detalhes do produto",
+      "name_product": "Nome do produto",
+      "value_buy": "Valor",
+      "date_limit": "Data Limite para solicitar reembolso",
+      "method_payment": "Método de pagamento",
+      "email_support": "E-mail de suporte do vendedor",
+      "subtitle_card_reason": "Motivo do reembolso",
+      "title_form": "Selecione o motivo do reembolso",
+      "subtitle_form": "Obrigatório",
+      "reason_1": "Eu ainda não consegui acessar o produto, mas gostaria de acessar",
+      "reason_2": "Preciso do dinheiro para outras coisas",
+      "reason_3": "Recebi o acesso, mas as páginas ou arquivos não abrem",
+      "reason_4": "A qualidade do produto não atingiu as minhas expectativas",
+      "reason_5": "O produto está incompleto",
+      "reason_6": "Compra duplicada",
+      "title_text_area": "Você gostaria de informar mais algo?",
+      "subtitle_text_area": "Opcional",
+      "button": "Solicitar Reembolso"
+    },
+    "refund-form-dialog" :{
+      "title": "Reembolso solicitado",
+      "message": "Você receberá um e-mail com o status do seu reembolso. Verifique a sua caixa de SPAM.",
+      "button": "Fechar"
+    },
   "validations": {
     "required": "Campo obrigatório",
     "email": "Informe um e-mail válido"

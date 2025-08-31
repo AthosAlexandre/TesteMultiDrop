@@ -30,6 +30,32 @@
       "card_button": "Request a refund",
       "card_status": "Refunded"
     },
+    "refund-form": {
+      "title": "Request a refund",
+      "subtitle_card_product": "Product details",
+      "name_product": "Product name",
+      "value_buy": "Value",
+      "date_limit": "Deadline to request a refund",
+      "method_payment": "Payment method",
+      "email_support": "Seller support email",
+      "subtitle_card_reason": "Reason for the refund",
+      "title_form": "Select the reason for the refund",
+      "subtitle_form": "Required",
+      "reason_1": "I still haven't been able to access the product, but I would like to access it",
+      "reason_2": "I need the money for other things",
+      "reason_3": "I received access, but the pages or files do not open",
+      "reason_4": "The quality of the product did not meet my expectations",
+      "reason_5": "The product is incomplete",
+      "reason_6": "Duplicate purchase",
+      "title_text_area": "Would you like to inform anything else?",
+      "subtitle_text_area": "Optional",
+      "button": "Request a refund"
+    },
+    "refund-form-dialog" :{
+      "title": "Refund requested",
+      "message": "You'll receive an email with the status of your refund. Check your SPAM folder.",
+      "button": "Close"
+    },
   "validations": {
     "required": "Required field",
     "email": "Enter a valid email"

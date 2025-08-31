@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import InputText from 'primevue/inputtext'
 import Card from 'primevue/card';
-import { useI18n } from 'vue-i18n'
+import { useI18n, type Locale } from 'vue-i18n'
 import VerifyEmailDialog from './components/VerifyEmailDialog.vue'
 import { useRefundRequest } from './../../stores/request-refund';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import ButtonComponent from '../../components/button-component/ButtonComponent.vue';
 
 const { t, d, n, locale } = useI18n();
@@ -20,10 +20,24 @@ function onConfirm() {
   showDialog.value = false
 }
 
-function toggleLocale() {
-  locale.value = locale.value === 'pt-BR' ? 'en' : 'pt-BR'
+/* const order: Locale[] = ['pt-BR', 'en', 'de']
+
+function cycleLocale() {
+  const i = order.indexOf(locale.value as Locale)
+  const next = order[(i + 1) % order.length]
+  locale.value = next
+  localStorage.setItem('locale', next)
 }
 
+const nextLabel = computed(() => {
+  const i = order.indexOf(locale.value as Locale)
+  const next = order[(i + 1) % order.length]
+  return next === 'en'
+    ? 'Switch to English'
+    : next === 'de'
+    ? 'Wechseln zu Deutsch'
+    : 'Mudar para Português'
+}) */
 
 </script>
 
@@ -69,9 +83,9 @@ function toggleLocale() {
       @confirm="onConfirm"
     />
 	</div>
-	<!-- <Button class="mt-3" outlined size="small" @click="toggleLocale">
-                {{ locale === 'pt-BR' ? 'Switch to English' : 'Mudar para Português' }}
-              </Button> -->
+	<!-- <Button class="mt-3" outlined size="small" @click="cycleLocale">
+    		{{ nextLabel }}
+  		</Button> -->
 </template>
 
 <style scoped>
