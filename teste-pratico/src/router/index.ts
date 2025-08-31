@@ -1,17 +1,32 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import RequestRefundView from '../views/request-refund/RequestRefundView.vue'
-import YourPurchasesView from '../views/your-purchases/YourPurchasesView.vue'
-import RefundFormView from '../views/refund-form/RefundFormView.vue'
-
-const routes = [
-  { path: '/', name: 'request-refund', component: RequestRefundView },
-  { path: '/your-purchases', name: 'your-purchases', component: YourPurchasesView },
-  { path: '/refund-form', name: 'refund-form', component: RefundFormView },
-]
+import DefaultLayout from '../layout/default-layout/DefaultLayout.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes,
+  routes: [
+    {
+      path: '/',
+      component: DefaultLayout,
+      children: [
+        {
+          path: '',
+          name: 'request-refund',
+          component: () => import('../views/request-refund/RequestRefundView.vue'),
+        },
+        {
+          path: 'your-purchases',
+          name: 'your-purchases',
+          component: () => import('../views/your-purchases/YourPurchasesView.vue'),
+        },
+        {
+          path: 'refund-form',
+          name: 'refund-form',
+          component: () => import('../views/refund-form/RefundFormView.vue'),
+        },
+      ],
+    },
+    { path: '/:pathMatch(.*)*', name: 'not-found', component: { template: '<div>404</div>' } },
+  ],
 })
 
 export default router

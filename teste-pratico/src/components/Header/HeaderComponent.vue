@@ -12,6 +12,7 @@
 
 <style scoped>
 header{
+	position: fixed;
 	width: 100%;
 	height: 65px;
 	background-color: #FFFFFF;
