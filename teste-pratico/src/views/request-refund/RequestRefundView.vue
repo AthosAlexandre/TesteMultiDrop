@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import InputText from 'primevue/inputtext'
 import Card from 'primevue/card';
-import { useI18n, type Locale } from 'vue-i18n'
+import { useI18n, } from 'vue-i18n'
 import { useAuthStore } from '@/stores/auth-store';
 import ButtonComponent from '@/components/button-component/ButtonComponent.vue';
 import VerifyEmailDialog from './components/VerifyEmailDialog.vue'
@@ -18,26 +18,6 @@ function openDialog(e?: Event) {
 function onConfirm() {
 	showDialog.value = false
 }
-
-/* 
-const order: Locale[] = ['pt-BR', 'en', 'de'];
-function cycleLocale() {
-	const i = order.indexOf(locale.value as Locale)
-	const next = order[(i + 1) % order.length]
-	locale.value = next
-	localStorage.setItem('locale', next)
-}
-
-const nextLabel = computed(() => {
-	const i = order.indexOf(locale.value as Locale)
-	const next = order[(i + 1) % order.length]
-	return next === 'en'
-		? 'Switch to English'
-		: next === 'de'
-		? 'Wechseln zu Deutsch'
-		: 'Mudar para Português'
-}); */
-
 </script>
 
 <template>
@@ -75,9 +55,6 @@ const nextLabel = computed(() => {
 		</main>
 		<VerifyEmailDialog v-model:visible="showDialog" :email="useAuth.email" @confirm="onConfirm" />
 	</div>
-	<!-- <Button class="mt-3" outlined size="small" @click="cycleLocale">
-    		{{ nextLabel }}
-  		</Button> -->
 </template>
 
 <style scoped>
