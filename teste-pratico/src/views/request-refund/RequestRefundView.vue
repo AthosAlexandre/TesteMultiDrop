@@ -23,7 +23,6 @@ const isEmailEmpty = computed(() => !((useAuth.email || '').trim().length));
 const isEmailValid = computed(() => emailValidator.test(useAuth.email || ''));
 const showError = computed(() => emailTouched.value && (isEmailEmpty.value || !isEmailValid.value));
 
-
 const emailError = computed(() => {
   if (!emailTouched.value) return '';
   if (isEmailEmpty.value || !isEmailValid.value) return t('refund.email_invalid') || 'Informe seu e-mail';
@@ -44,7 +43,6 @@ function openDialog(e?: Event) {
   }
   showDialog.value = true;
 }
-
 
 function onConfirm() {
 	showDialog.value = false
