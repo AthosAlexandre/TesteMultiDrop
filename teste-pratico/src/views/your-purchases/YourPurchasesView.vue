@@ -51,18 +51,43 @@ const compras = [
 ];
 
 const messagePt = {
-	root: {
-		style: {
-			display: 'inline-flex',
-			alignItems: 'center',
-			color: '#FFFFFF',
-			borderRadius: '140px',
-			maxHeight: '22px',
-			maxWidth: '130px'
-		}
-	},
-	text: { style: { fontSize: '12px' } }
+  root: {
+    style: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      color: '#FFFFFF',
+      borderRadius: '140px',
+      maxHeight: '22px',
+      maxWidth: '135px',
+      padding: '2px 8px'
+    }
+  },
+  wrapper: {
+    style: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: '6px', 
+      lineHeight: 1
+    }
+  },
+  icon: {
+    style: {
+      fontSize: '14px',
+      lineHeight: 1,
+      display: 'inline-flex',
+      alignItems: 'center'
+    }
+  },
+  text: {
+    style: {
+      fontSize: '12px',
+      lineHeight: 1,
+      display: 'inline-flex',
+      alignItems: 'center'
+    }
+  }
 }
+
 
 </script>
 
