@@ -63,7 +63,7 @@ function navegate() {
 </script>
 
 <template>
-  <Dialog v-model:visible="visible" :position="position" modal :draggable="false" :dismissableMask="true"
+  <Dialog v-model:visible="visible" :blockScroll="false" :position="position" modal :draggable="false" :dismissableMask="true"
     :style="{ width: 'min(480px, calc(100vw - 32px))' }" header=" "
     :pt="{
     header:  { class: 'py-1 px-3' },

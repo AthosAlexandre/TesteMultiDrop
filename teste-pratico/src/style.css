@@ -13,3 +13,31 @@ body{
 .pages{
   background-color: #FAFAFA;
 }
+
+html, body { scrollbar-gutter: stable both-edges; }
+html { overflow-y: scroll; }
+
+/* ✅ neutraliza scroll-lock e padding em html/body */
+html.p-overflow-hidden,
+html.p-component-overlay-scrollblock,
+body.p-overflow-hidden,
+body.p-component-overlay-scrollblock {
+  overflow-y: scroll !important;
+  padding-right: 0 !important;
+}
+
+.p-component-overlay,
+.p-dialog-mask {
+  width: 100% !important; 
+  left: 0 !important;
+  right: 0 !important;
+}
+
+.p-component-overlay,
+.p-dialog-mask {
+  overflow-x: hidden !important;
+}
+
+.p-component-overlay {
+  overscroll-behavior: contain;
+}

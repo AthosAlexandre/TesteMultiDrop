@@ -3,7 +3,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import i18n from '@/i18n'
 
 type Locale = 'pt-BR' | 'en' | 'de'
-const SUPPORTED: Locale[] = ['pt-BR','en','de']
 
 function normalizeLang(seg?: string): Locale | undefined {
   if (!seg) return

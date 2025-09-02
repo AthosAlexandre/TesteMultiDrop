@@ -36,6 +36,8 @@ onBeforeUnmount(() => mql.removeEventListener('change', handleMq))
   <Dialog
     v-model:visible="visible"
     :position="position"
+    :blockScroll="false"
+    appendTo="body"
     modal
     :closable="false"
     :dismissable-mask="true"
