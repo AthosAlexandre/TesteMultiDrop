@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref, onMounted  } from 'vue';
 import InputText from 'primevue/inputtext'
 import Card from 'primevue/card';
 import { useI18n, } from 'vue-i18n'
@@ -7,14 +7,45 @@ import { useAuthStore } from '@/stores/auth-store';
 import ButtonComponent from '@/components/button-component/ButtonComponent.vue';
 import VerifyEmailDialog from './components/VerifyEmailDialog.vue'
 
+onMounted(() => {
+  useAuth.clear();
+});
+
 const { t, d, n, locale } = useI18n();
 const useAuth = useAuthStore();
 const showDialog = ref(false);
 
-function openDialog(e?: Event) {
-	e?.preventDefault()
-	showDialog.value = true
+const emailTouched = ref(false);
+const emailInputRef = ref<HTMLInputElement | null>(null);
+
+const emailValidator = /.+@/;
+const isEmailEmpty = computed(() => !((useAuth.email || '').trim().length));
+const isEmailValid = computed(() => emailValidator.test(useAuth.email || ''));
+const showError = computed(() => emailTouched.value && (isEmailEmpty.value || !isEmailValid.value));
+
+
+const emailError = computed(() => {
+  if (!emailTouched.value) return '';
+  if (isEmailEmpty.value || !isEmailValid.value) return t('refund.email_invalid') || 'Informe seu e-mail';
+  return '';
+});
+
+function onBlurEmail() {
+  emailTouched.value = true;
 }
+
+function openDialog(e?: Event) {
+  e?.preventDefault();
+  emailTouched.value = true;
+
+  if (isEmailEmpty.value || !isEmailValid.value) {
+    emailInputRef.value?.focus();
+    return;
+  }
+  showDialog.value = true;
+}
+
+
 function onConfirm() {
 	showDialog.value = false
 }
@@ -39,15 +70,31 @@ function onConfirm() {
 								<label style="color: #1D1F20; font-weight: 600; font-size: 14px;" for="ssn"
 									class="font-bold block mb-2">{{ t('refund.email_label') }}</label>
 
-								<InputText :pt="{
-									root: {
-										class :'input-text'
-									},
-								}" id="email" v-model="useAuth.email" type="email" class="w-full" autocomplete="email" />
+								<InputText
+                  id="email"
+                  ref="emailInputRef"
+                  v-model="useAuth.email"
+                  type="email"
+                  name="email"
+                  spellcheck="false"
+                  :aria-invalid="showError"
+                  :aria-describedby="showError ? 'email-error' : undefined"
+                  :class="['w-full','input-text',{ 'p-invalid': showError }]"
+                  :pt="{ root: { class: 'input-text' } }"
+                  @blur="onBlurEmail"
+                />
+
+								 <small v-if="emailError" class="p-error msg-erro">{{ emailError }}</small>
 
 							</div>
-							<ButtonComponent :label="t('refund.text_button')" :max-width="390" :margin-top="24" @click="openDialog"
-								type="submit" />
+							<ButtonComponent 
+  							:label="t('refund.text_button')" 
+  							:max-width="390" 
+  							:margin-top="24" 
+  							@click="openDialog"
+  							type="submit"
+  							:disabled="!isEmailValid && emailTouched"
+							/>
 						</template>
 					</Card>
 				</form>
@@ -92,5 +139,19 @@ p {
 	width: 100%;
 	max-width: 390px;
 	height: 48px;
+}
+
+:deep(.p-inputtext.p-invalid),
+.input-text.p-invalid {
+  border-color: #DC2626 !important;   /* vermelho */
+  box-shadow: 0 0 0 1px rgba(220,38,38,0.08);
+}
+
+/* mensagem de erro */
+.msg-erro {
+  display: block;
+  margin-top: 6px;
+  color: #DC2626;
+  font-size: 12px;
 }
 </style>

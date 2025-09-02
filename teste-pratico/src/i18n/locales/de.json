@@ -9,13 +9,15 @@
     "title": "Rückerstattung anfordern",
     "text": "Du kannst eine Rückerstattung innerhalb der vom Vendor festgelegten Frist beantragen.",
     "email_label": "E-Mail, die du beim Kauf verwendet hast",
-    "text_button": "Bestellung finden"
+    "text_button": "Bestellung finden",
+    "email_invalid": "Geben Sie eine gültige E-Mail mit @ ein"
   },
   "refund_dialog": {
     "title": "E-Mail bestätigen",
     "text": "Um diesen Vorgang zu bestätigen, gib bitte den Code ein, den wir an deine E-Mail-Adresse geschickt haben: ",
     "resend_code": "Code erneut senden (40s)",
-    "button": "Weiter"
+    "button": "Weiter",
+    "otp_required": "Geben Sie die 6 Ziffern des Codes ein"
   },
   "your_purchases": {
     "button_back": "Zurück",
@@ -50,7 +52,8 @@
     "reason_6": "Ich habe das Produkt nicht mehr benötigt",
     "title_text_area": "Sonstiger Grund:",
     "subtitle_text_area": "",
-    "button": "Rückerstattung beantragen"
+    "button": "Rückerstattung beantragen",
+    "reason_required": "Wählen Sie einen Grund aus"
   },
   "refund-form-dialog": {
     "title": "Rückerstattung angefragt",

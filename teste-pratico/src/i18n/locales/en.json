@@ -9,13 +9,15 @@
     "title": "Request a refund",
 		"text": "You can request a refund within the period stipulated by the producer.",
     "email_label": "Email used in the purchase",
-		"text_button": "Find your purchase"
+		"text_button": "Find your purchase",
+    "email_invalid": "Enter a valid email with @"
   },
   "refund_dialog": {
     "title": "Verify your email",
     "text": "To confirm this operation, enter the code we sent to your email: ",
     "resend_code": "Resend code (40s)",
-    "button": "Continue"
+    "button": "Continue",
+    "otp_required": "Fill in the 6 digits of the code"
     },
    "your_purchases": {
       "button_back": "Back",
@@ -50,7 +52,8 @@
       "reason_6": "Duplicate purchase",
       "title_text_area": "Would you like to inform anything else?",
       "subtitle_text_area": "Optional",
-      "button": "Request a refund"
+      "button": "Request a refund",
+      "reason_required": "Select a reason"
     },
     "refund-form-dialog" :{
       "title": "Refund requested",

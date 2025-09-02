@@ -22,14 +22,6 @@ function close() {
   visible.value = false
 }
 
-function navegate() {
-  if (value.value.length !== 6) return
-
-  close()
-  emit('confirm')
-  router.push({ name: 'your-purchases' });
-}
-
 const mql = window.matchMedia('(max-width: 640px)');
 const isMobile = ref(mql.matches);
 const position = computed(() => (isMobile.value ? 'top' : 'center'));
@@ -39,6 +31,34 @@ onMounted(() => mql.addEventListener('change', handleMq));
 onBeforeUnmount(() => mql.removeEventListener('change', handleMq));
 
 const rootStyle = computed(() => (isMobile.value ? { marginTop: '68px' } : {}));
+
+const otpTouched = ref(false);
+const isOtpComplete = computed(() => value.value.trim().length === 6);
+const otpErrorText = computed(() =>
+  !otpTouched.value || isOtpComplete.value ? '' : (t('refund_dialog.otp_required'))
+);
+
+const otpEl = ref<InstanceType<typeof InputOtp> | null>(null);
+
+function focusFirstEmptyOtp() {
+
+  const root = (otpEl.value as any)?.$el as HTMLElement | undefined;
+  if (!root) return;
+  const inputs = Array.from(root.querySelectorAll('input.p-inputotp-input')) as HTMLInputElement[];
+  const firstEmpty = inputs.find(i => !i.value);
+  (firstEmpty ?? inputs[0])?.focus();
+}
+
+function navegate() {
+  otpTouched.value = true;
+  if (!isOtpComplete.value) {
+    focusFirstEmptyOtp();
+    return;
+  }
+  close();
+  emit('confirm');
+  router.push({ name: 'your-purchases' });
+}
 
 </script>
 
@@ -59,8 +79,18 @@ const rootStyle = computed(() => (isMobile.value ? { marginTop: '68px' } : {}));
       </div>
 
       <div class="container-input flex justify-content-center">
-        <div class="card flex justify-center">
-          <InputOtp v-model="value" :length="6" class="otp-lg" />
+        <div class="card flex flex-column justify-center">
+          <InputOtp
+            ref="otpEl"
+            v-model="value"
+            :length="6"
+            class="otp-lg"
+            :inputProps="{
+              'aria-invalid': otpTouched && !isOtpComplete,
+              'aria-describedby': otpTouched && !isOtpComplete ? 'otp-error' : undefined
+            }"
+          />
+          <small v-if="otpErrorText" id="otp-error" class="p-error otp-error-msg">{{ otpErrorText }}</small>
         </div>
       </div>
 
@@ -108,6 +138,12 @@ p{
   font-size: 20px;
   text-align: center;
   border: 1px solid #737373;
+}
+
+.otp-error-msg { margin-top: 8px; color:#DC2626; font-size:12px; text-align:center; }
+.otp-lg:deep(.p-inputotp-input[aria-invalid="true"]) {
+  border-color:#DC2626 !important;
+  box-shadow: 0 0 0 1px rgba(220,38,38,0.08);
 }
 
 @media (max-width: 640px) {

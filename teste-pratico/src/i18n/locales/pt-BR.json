@@ -9,13 +9,15 @@
     "title": "Solicitar reembolso",
 		"text": "Você pode solicitar um reembolso dentro do prazo estipulado pelo produtor.",
     "email_label": "E-mail usado na compra",
-    "text_button": "Encontrar sua compra"
+    "text_button": "Encontrar sua compra",
+    "email_invalid": "Digite um e-mail válido com @"
   },
     "refund_dialog": {
     "title": "Verica o seu e-mail",
     "text": "Para confirmar esta operação, digite o código que enviamos para o seu e-mail: ",
     "resend_code": "Reenviar código (40s)",
-    "button": "Continuar"
+    "button": "Continuar",
+    "otp_required": "Preencha os 6 dígitos do código"
     },
     "your_purchases": {
       "button_back": "Voltar",
@@ -50,7 +52,8 @@
       "reason_6": "Compra duplicada",
       "title_text_area": "Você gostaria de informar mais algo?",
       "subtitle_text_area": "Opcional",
-      "button": "Solicitar Reembolso"
+      "button": "Solicitar Reembolso",
+      "reason_required": "Selecione um motivo"
     },
     "refund-form-dialog" :{
       "title": "Reembolso solicitado",
