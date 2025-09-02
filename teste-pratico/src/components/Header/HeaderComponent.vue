@@ -32,7 +32,7 @@ watch(selected, (val) => {
 <template>
   <header class="header">
     <div class="logo">
-      <img src="@/assets/logo-multidrop.avif" alt="MultiDrop" /> 
+      <img src="@/assets/img/logo-multidrop.avif" alt="MultiDrop" /> 
     </div>
 
     <div class="lang-switch">

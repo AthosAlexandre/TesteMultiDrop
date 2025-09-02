@@ -3,7 +3,7 @@ import { useRouter } from 'vue-router'
 import Card from 'primevue/card';
 import { Message } from 'primevue';
 import { useI18n } from 'vue-i18n'
-import fone from '@/assets/fone-transparente.avif';
+import fone from '@/assets/img/fone-transparente.avif';
 import SubHeader from '@/components/sub-header/SubHeader.vue';
 import ButtonComponent from '@/components/button-component/ButtonComponent.vue';
 
