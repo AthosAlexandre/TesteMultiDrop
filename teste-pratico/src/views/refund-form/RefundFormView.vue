@@ -37,7 +37,7 @@ function reembolsoSolicitado() {
 </script>
 
 <template>
-	<main class="container-refund-form flex flex-column md:justify-content-between align-items-center">
+	<main class="pages container-refund-form flex flex-column md:justify-content-between align-items-center">
 		<SubHeader :title="t('refund-form.title')" v-on:back="goBack" />
 
 		<section class="container-cards flex flex-column justify-content-between md:gap-4"
@@ -160,10 +160,6 @@ function reembolsoSolicitado() {
 </template>
 
 <style scoped>
-.container-refund-form {
-	background-color: #FAFAFA;
-}
-
 .campo-produto {
 	height: 39px;
 }

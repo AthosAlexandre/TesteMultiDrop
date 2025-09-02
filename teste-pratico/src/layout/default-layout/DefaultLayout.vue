@@ -13,7 +13,6 @@ import HeaderComponent from '@/components/Header/HeaderComponent.vue'
 <style scoped>
 .page {
   min-height: calc(100vh - 65px);
-  background: #FAFAFA;
 	padding-top: 65px;
 }
 </style>

@@ -23,7 +23,7 @@ function onConfirm() {
 <template>
 	<div>
 
-		<main class="box-main flex flex-column align-items-center p-3 sm:p-4 md:p-5">
+		<main class="pages box-main flex flex-column align-items-center p-3 sm:p-4 md:p-2">
 			<div class="container-formulario">
 
 				<div class="container-texto">
@@ -60,8 +60,6 @@ function onConfirm() {
 <style scoped>
 .box-main {
 	width: 100%;
-	min-height: calc(100vh - 65px);
-	background-color: #FAFAFA;
 }
 
 .container-formulario {

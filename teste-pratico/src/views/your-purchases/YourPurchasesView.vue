@@ -2,17 +2,12 @@
 import { useRouter } from 'vue-router'
 import Card from 'primevue/card';
 import { Message } from 'primevue';
-import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
-import { useAuthStore } from '@/stores/auth-store'
 import fone from '@/assets/fone-transparente.avif';
 import SubHeader from '@/components/sub-header/SubHeader.vue';
 import ButtonComponent from '@/components/button-component/ButtonComponent.vue';
 
 const { t } = useI18n();
-
-const useAuth = useAuthStore();
-const { email } = storeToRefs(useAuth);
 const navegar = useRouter();
 
 function goBack() {
@@ -92,7 +87,7 @@ const messagePt = {
 </script>
 
 <template>
-	<main class="container-main flex flex-column align-items-center">
+	<main class="pages container-main flex flex-column align-items-center">
 
 		<SubHeader :title="t('your_purchases.title')" v-on:back="goBack" />
 
