@@ -17,7 +17,6 @@ body{
 html, body { scrollbar-gutter: stable both-edges; }
 html { overflow-y: scroll; }
 
-/* ✅ neutraliza scroll-lock e padding em html/body */
 html.p-overflow-hidden,
 html.p-component-overlay-scrollblock,
 body.p-overflow-hidden,
